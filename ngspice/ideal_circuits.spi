@@ -32,6 +32,7 @@ Xbal IOUT VCM OP ON cpdk_ideal_balun
 
 .subckt cpdk_ideal_switch P N C VDD_1V8 VSS RON=1k
 BR1 P N I=V(C,VSS)*V(P,N)/{RON}
+R1 P N 100G
 .ends
 
 .subckt cpdk_ideal_switch_cn P N CN VDD_1V8 VSS RON=1k
