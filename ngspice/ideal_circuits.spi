@@ -17,11 +17,23 @@ R2 7 6 1u
 
 
 .subckt cpdk_ideal_ota P N OUT VDD_1V8 VSS GAIN=1000 UGBW=1e6
+R1 P P1 1k
+C1 P1 0 1f
+R2 N N1 1k
+C2 N1 0 1f
 * The 1.1 factor is to compensate the gain, no idea why, there should be a reasonable explanation though.
-BOTA OUT_INT VSS V = (1 + tanh(-1.1*{GAIN}*(v(P,N) ) ) ) /2*v(VDD_1V8,VSS)
-R1 OUT_INT OUT_RC 100k
-C1 OUT_RC VSS {(1/(UGBW*2*3.14159)/100k)*GAIN}
+BOTA OUT_INT VSS V = (1 + tanh(-1.1*{GAIN}*(v(P1,N1) ) ) ) /2*v(VDD_1V8,VSS)
+R3 OUT_INT OUT_RC 100k
+C3 OUT_RC VSS {(1/(UGBW*2*3.14159)/100k)*GAIN}
 BOUT OUT VSS V=V(OUT_RC,VSS)
+.ends
+
+.subckt cpdk_ideal_cmp P N OUT VDD_1V8 VSS GAIN=1000
+R1 P P1 1k
+C1 P1 0 1f
+R2 N N1 1k
+C2 N1 0 1f
+BCMP OUT VSS V=(1 + tanh(-1.1*{GAIN}*(v(P1,N1) ) ) ) /2*v(VDD_1V8,VSS)
 .ends
 
 .subckt cpdk_ideal_ota_diff P N OP ON VDD_1V8 VSS GAIN=1000
