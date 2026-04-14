@@ -3,8 +3,9 @@ v {xschem version=3.4.5 file_version=1.2
 G {}
 K {
 type=logo
-template="company=\\"Carsten Wulff Software\\" user=\\"wulff\\" "
+template="company=\\"Carsten Wulff Software\\" user=\\"wulff\\" user_updated=\\"tcleval($env(USER))\\""
 user=me
+user_updated=tcleval($env(USER))
 verilog_ignore=true
 vhdl_ignore=true
 spice_ignore=true
@@ -35,7 +36,7 @@ T {Library/Cell} 25 -10 0 0 0.25 0.25 { vcenter=true}
 T {Designer} 810 -90 0 0 0.25 0.25 { vcenter=true}
 T {Modified} 810 -50 0 0 0.25 0.25 { vcenter=true}
 T {Copyright} 815 -30 0 0 0.25 0.25 { vcenter=true}
-T {tcleval($env(USER))} 890 -70 0 0 0.25 0.25 { vcenter=true}
+T {@user_updated} 890 -70 0 0 0.25 0.25 { vcenter=true}
 T {@time_last_modified} 890 -50 0 0 0.25 0.25 { vcenter=true}
 T {@company} 890 -30 0 0 0.25 0.25 { vcenter=true}
 T {@schname} 140 -10 0 0 0.25 0.25 { vcenter=true}
